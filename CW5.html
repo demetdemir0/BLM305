@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+    <title>CW#4 </title>
+
+  <style> /* CSS comment */
+    body { max-width: 440px; }
+    #url { width: 190px; }
+    span, #url { color: blue; }
+  </style>
+</head>
+
+<body>   <!-- HTML comment: Modify all items marked xxx -->
+
+<h2 id=title title="Put your name here"></h2>
+<p title="navigator.platform">
+
+<h3>Battery Status</h3>
+      <p id="batteryChargeState"></p>
+      <progress id="batteryProgress" value="0" max="1.0"></progress>
+      <span id="batteryPercentage"></span>
+      <p id="batteryRemainingTime"></p>
+      
+      <h3>Online Status</h3>
+      <p id="connectionStatus"></p>
+      
+      <h3>Keyboard</h3>
+      <p id="keyboardInput"></p>
+      
+      <hr />
+      <b>Sample code</b>
+      <pre id=sample>This text is not shown. Why?</pre>
+      
+      <hr />
+      
+      <script>
+      "use strict";
+      // JavaScript comment
+      var battery;
+      
+      function init() {
+          navigator.getBattery().then(b => setBatteryAndListeners(b))
+          
+          navigator.onoffline = setOnlineStateDescription;
+          navigator.ononline = setOnlineStateDescription;
+          document.onkeydown = keyboardDown;
+          
+          setOnlineStateDescription()
+      }
+      
+      function setBatteryAndListeners(b) {
+          battery = b;
+          battery.onchargingchange = setChargingState;
+          battery.onlevelchange = setLevelChange;
+          battery.onchargingtimechange = setChargingTime;
+          battery.ondischargingtimechange = setDischargingTime;
+          
+          
+          setChargingState();
+          setLevelChange();
+          setChargingTime();
+          setDischargingTime();   
+      }
+      
+      function setChargingState() {
+          batteryChargeState.innerText = 
+              battery.charging ? "Charging...": "Discharging...";
+          
+          setChargingTime();
+          setDischargingTime();
+      }
+      
+      function setLevelChange() {
+          batteryProgress.value = getBatteryLevel();
+          batteryPercentage.innerText = getBatteryLevel() + "%";
+      }
+      
+      function setChargingTime() {
+          if (battery.chargingTime != Infinity) {
+              batteryRemainingTime.innerText = 
+                  convertSecondsToHourMinutes(battery.chargingTime) + " remaining.";
+          }
+      }
+      
+      function setDischargingTime() {
+          if(battery.dischargingTime != Infinity) {
+              batteryRemainingTime.innerText = 
+                  convertSecondsToHourMinutes(battery.dischargingTime) + " remaining.";
+          }
+      }
+      
+      function setOnlineStateDescription() {
+          if(navigator.onLine) {
+              connectionStatus.innerText = "connected..."
+          }
+          else {
+             connectionStatus.innerText = "disconnected..."
+          }
+          
+          connectionStatus.innerText += navigator.onLine;
+      }
+          
+      function keyboardDown(event) {
+          keyboardInput.innerText = event.key;
+      }
+      
+      function keyboardUp(event) {
+          keyboardInput.innerText = event.key;
+      }
+          
+      function getBatteryLevel() {
+          return battery.level*100;
+      }
+          
+      function convertSecondsToHourMinutes(seconds) {
+          let hours = Math.floor(seconds / 3600);
+          let minutes = Math.floor(seconds % 3600 / 60);
+          
+          return hours + ":" + minutes;
+      }
+      
+          title.innerText = document.title;
+          sample.innerText = init+'\n'+setBatteryAndListeners+'\n'+setChargingState+'\n'+
+              setLevelChange+'\n'+setChargingTime+
+              '\n'+setDischargingTime+'\n'+setOnlineStateDescription+
+              '\n'+keyboardDown+'\n'+keyboardUp+'\n'+getBatteryLevel+
+              '\n'+convertSecondsToHourMinutes;
+          init();
+          check();
+      </script>
+      
+      </body>
+      </html>
+      

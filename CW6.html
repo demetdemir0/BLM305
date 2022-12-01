@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../images/avatar.png">
+  <title>GitHub Users</title>
+  <style>
+    body {
+        max-width: 440px;
+    }
+    img {
+        padding-right: 12px; 
+        width: 200px;
+        float: left;
+    }
+    pre{
+      overflow-x: auto;
+    }
+    h2,p{
+      margin: 0%;
+    }
+    #unm { color: rgb(194, 181, 181); }
+  </style>
+</head>
+
+<body>
+
+<h2 id=title></h2>
+<input type=text id=usr value=demetdemir0 onChange="readUser()">
+<pre id=image>
+</pre>
+<h2 id=nm></h2>
+<p id=unm></p><br>
+<p id=cl></p>
+
+
+<hr />
+<b>Sample code</b>
+<pre id=sample></pre>
+<hr />
+
+
+<script>
+"use strict";
+function error(e) {
+    out.innerText = e
+    out.style.color = 'red'
+    console.error(e)
+}
+function cause(s) {
+  switch (s) {
+    case 403:
+      return 'Rate limit exceeded'
+    case 404:
+      return usr.value+' not found'
+    default:
+      return 'Status '+s
+  }
+}
+async function toJSON(url) {
+  try {
+    let r = await fetch(url)
+    if (!r.ok) throw cause(r.status)
+    return r.json()
+  } catch (e) {
+    error(e)
+  }
+}
+async function readUser() {
+    const URL = "https://api.github.com/users/"
+    const BR = '<BR>'
+    let u = await toJSON(URL+usr.value)
+    if (!u || !u.login) return
+    //start with avatar
+    image.innerHTML = `<img src="${u.avatar_url}">`
+    //add name and location
+    nm.innerHTML = u.name
+    unm.innerHTML = u.login
+    console.log(u.name+'-'+u.login)
+    let e=''
+    cl.innerHTML = 'Company: FSMVU  '+
+    (u.company?u.company:e)
+    cl.innerHTML += BR+'Location: istanbul '+
+    (u.location?u.location:e)
+    cl.innerHTML += BR+'Email: is not found'+ 
+    (u.email?
+    `<a href="https://${u.email}" target=NewTab>${u.email}</a>`
+    :e)
+    let n = u.public_repos
+    
+    
+     //add link to GitHub
+    let h = "github.com/"+u.login
+    cl.innerHTML +=BR+'Link of GitHub page : '+
+    `<a href="https://${h}" target=NewTab>${h}</a>`
+   
+   
+    
+}
+    title.innerText = document.title
+    sample.innerText = toJSON +'\n'+ readUser
+    readUser()
+</script>
+
+</body>
+</html>

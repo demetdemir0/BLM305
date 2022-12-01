@@ -1,107 +1,196 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="icon" href="../images/avatar.png">
-  <title>GitHub Users</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>GitHub Users</title>
+
   <style>
     body {
-        max-width: 440px;
+        max-width: 300px;
     }
-    img {
-        padding-right: 12px; 
-        width: 200px;
-        float: left;
+    img { 
+        width: 300px;
+		padding:5px;
     }
-    pre{
-      overflow-x: auto;
-    }
-    h2,p{
-      margin: 0%;
-    }
-    #unm { color: rgb(194, 181, 181); }
+	#name1 {
+	font-weight: bold;
+	padding:5px;
+	}
+	#username {
+	padding:5px;
+	}
+	#company {
+	padding:5px;
+	}
+	#loca {
+	padding:5px;
+	}
+	#id {
+	padding:5px;
+	}
+	#blog {
+	padding:5px;
+	}
+    #foll {
+	padding:5px;
+    text-decoration: underline;
+	}
+    #out {
+	padding:5px;
+	}
   </style>
 </head>
-
 <body>
-
 <h2 id=title></h2>
 <input type=text id=usr value=demetdemir0 onChange="readUser()">
-<pre id=image>
-</pre>
-<h2 id=nm></h2>
-<p id=unm></p><br>
-<p id=cl></p>
+<div id=pic></div>
+<div id=name1></div>
+<div id=username></div>
+<div id=company></div>
+<div id=loca></div>
+<a id="repoLink" target="NewTab" href="https://github.com/demetdemir0">github.com/demetdemir0</a>
 
+<p>Ref: 
+  <a href="https://docs.github.com/en/rest/reference/rate-limit" target=NewTab>GitHub API</a> &emsp;
+  <a href="https://blm305.github.io/2021/work/await.html" target=NewTab>await</a>
+</p>
 
-<hr />
 <b>Sample code</b>
+
+function readUser() {
+  fetch(URL+usr.value).then(r => r.ok? r.json() : null).then(userData).catch(error);
+  let h = "github.com/"+u.login
+  repoLink.href = "https://"+h
+  repoLink.innerText = h
+  pic.innerHTML = ''
+  name1.innerHTML = ''
+  username.innerHTML = ''
+  company.innerHTML = ''
+  loca.innerHTML = ''
+}
 <pre id=sample></pre>
-<hr />
-
-
 <script>
 "use strict";
-function error(e) {
-    out.innerText = e
+const NL = "\n", BR = "<BR>", 
+    URL = "https://api.github.com/users/"
+function error(t) {
     out.style.color = 'red'
-    console.error(e)
+    out.innerText = t; console.log(t)
 }
-function cause(s) {
-  switch (s) {
-    case 403:
-      return 'Rate limit exceeded'
-    case 404:
-      return usr.value+' not found'
-    default:
-      return 'Status '+s
-  }
+function listFollowers(b) {
+    if (b.length) 
+      out.innerHTML += b.map(x => x.login).join(BR)
 }
-async function toJSON(url) {
-  try {
-    let r = await fetch(url)
-    if (!r.ok) throw cause(r.status)
-    return r.json()
-  } catch (e) {
-    error(e)
-  }
-}
-async function readUser() {
-    const URL = "https://api.github.com/users/"
-    const BR = '<BR>'
-    let u = await toJSON(URL+usr.value)
-    if (!u || !u.login) return
-    //start with avatar
-    image.innerHTML = `<img src="${u.avatar_url}">`
-    //add name and location
-    nm.innerHTML = u.name
-    unm.innerHTML = u.login
-    console.log(u.name+'-'+u.login)
-    let e=''
-    cl.innerHTML = 'Company: FSMVU  '+
-    (u.company?u.company:e)
-    cl.innerHTML += BR+'Location: istanbul '+
-    (u.location?u.location:e)
-    cl.innerHTML += BR+'Email: is not found'+ 
-    (u.email?
-    `<a href="https://${u.email}" target=NewTab>${u.email}</a>`
-    :e)
-    let n = u.public_repos
-    
-    
-     //add link to GitHub
-    let h = "github.com/"+u.login
-    cl.innerHTML +=BR+'Link of GitHub page : '+
-    `<a href="https://${h}" target=NewTab>${h}</a>`
+function userData(u) {
+    if (!u || !u.login) {
+      error(usr.value+' not found')
+      return
+    } 
    
-   
-    
-}
-    title.innerText = document.title
-    sample.innerText = toJSON +'\n'+ readUser
-    readUser()
-</script>
 
+
+
+    //start with a tiny image
+    let i = document.createElement("img");
+    i.src = u.avatar_url;
+    pic.appendChild(i);
+
+
+    //add name
+    let ad = u.name;
+    name1.innerHTML = ad;
+
+
+    //add link to GitHub
+	let uname = u.login;
+    username.innerHTML = uname;
+
+
+	//add company
+    let co = u.company
+    company.innerHTML = co;
+
+
+	//add location
+	let location1 = u.location;
+    loca.innerHTML = location1;
+
+
+    //add id
+	let id1 = u.id;
+    id.innerHTML = id1;
+
+
+	//add blog
+	let blog1 = u.blog;
+    blog.innerHTML = blog1;
+
+
+    //add followers
+    let p = u.followers+" followers";
+    foll.innerHTML = p   
+    fetch(URL+u.login+"/followers")
+      .then(r => r.json()) 
+      .then(listFollowers).catch(error);
+    
+	
+}
+function readUser() {
+    fetch(URL+usr.value).then(r => r.ok? r.json() : null).then(userData).catch(error);
+    let h = "github.com/"+u.login
+    repoLink.href = "https://"+h
+    repoLink.innerText = h
+    pic.innerHTML = ''
+    name1.innerHTML = ''
+	username.innerHTML = ''
+	company.innerHTML = ''
+	loca.innerHTML = ''
+	blog.innerHTML = ''
+    foll.innerHTML = ''
+    out.innerHTML = ''
+}
+    title.innerText = document.title;
+    readUser();
+    
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 </html>

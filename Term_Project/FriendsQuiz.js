@@ -154,8 +154,8 @@ function gecisYap(){
     }
 
 degistir();
-const CACHE ='Term_Project'
-const FILES = ['/Term_Project/', '/Term_Project/sss/', '/BLM305/index.html']
+const CACHE ='FriendsQuiz.html'
+const FILES = ['/FriendsQuiz.html/', '/FriendsQuiz.html/sss/', '/BLM305/index.html']
 function installCB(e) {
   e.waitUntil(
     caches.open(CACHE)

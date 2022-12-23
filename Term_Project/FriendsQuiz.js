@@ -29,23 +29,23 @@ let answers=[ ["Ciddi ve titiz", "Ne yapacağı belli olmayan ", "Çalışkan ve
 
 
 
-let gifs =["https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru1.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru2.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru3.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru4.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru5.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru6.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru7.gif",
-"https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/soru8.gif"
+let gifs =["https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru1.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru2.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru3.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru4.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru5.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru6.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru7.gif",
+"https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru8.gif"
 ]
 
 let sonucgifs=[
-    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/monica.gif",
-    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/pheobe.gif",
-    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/ross.gif",
-    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/chandler.gif",
-    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/joey.gif",
-    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/gif/rachel.gif"
+    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/monica.gif",
+    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/pheobe.gif",
+    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/ross.gif",
+    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/chandler.gif",
+    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/joey.gif",
+    "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/rachel.gif"
 ]
 var options;
 var testsonuc;
@@ -143,7 +143,7 @@ function degistir(){
 
 function play() {
 
-    let audio1 = new Audio('https://github.com/demetdemir0/BLM305/blob/main/Project/Friends%20Theme%20Song.mp3');
+    let audio1 = new Audio('https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/FriendsThemeSong.mp3');
     audio1.play();
 }
 

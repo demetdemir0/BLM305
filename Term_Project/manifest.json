@@ -1,0 +1,13 @@
+{
+    "name": "FriendsQuiz",
+    "start_url": "/BLM305/index.html",
+    "display": "standalone",
+    "background_color": "grey",
+    "icons": [
+      {
+        "src": "images/avatar.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }

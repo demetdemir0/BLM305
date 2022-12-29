@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
 	<title>Friends Quiz</title>
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width", initial-scale=1.0">
 	<link rel="icon" sizes="192x192" href="/images/avatar.PNG">
 	<link rel="manifest" href="manifest.json">
 	<style>
@@ -19,25 +19,28 @@ body {
 }
 
 #ekran1{
-  height:100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+	height:100%;
+	position: absolute;
+	top: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 #quizekran{
 	margin-left: 6%;
 	text-align: center;
-    position: fixed;
+    position: sticky;
     z-index: 1;
     top: 0;
  
 }
 #ekran3 {
-	margin-left: 8%;
-	text-align: center;
-    position: fixed;
-    z-index: 1;
-    top: 0;
+	height:100%;
+	position: absolute;
+	top: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 h2 {text-align:center;color:white;}
 #score {
@@ -53,10 +56,10 @@ h2 {text-align:center;color:white;}
 	cursor: pointer;
     background-color:  cornsilk;
     width: 120px;
-    font-size: 20px;
+    font-size: 70px;
 	font-weight: 300; 
     color: #1F2739;
-    padding: 10px 10px;
+    padding: 5px 5px;
     text-align:left;
     border-radius: 14px;
     font-family:'Times New Roman';
@@ -70,9 +73,9 @@ h2 {text-align:center;color:white;}
 .buttongiris{
 	background-color:  rgb(255, 248, 220);
 	text-align: center; 
-	font-size: 20px; 
-	font-weight: 300; 
-	border-radius: 50px; 
+	font-size: 40px; 
+	font-weight: 200; 
+	border-radius: 60px; 
 	padding: 10px; 
 	color: rgb(18, 18, 124);
     font-family:'Times New Roman';
@@ -83,13 +86,13 @@ h2 {text-align:center;color:white;}
 }
 #choice0,#choice1,#choice2,#choice3,#choice4,#choice5{
 	color: rgb(8, 18, 107);
-	font-size: 15px;
+	font-size: 30px;
 	font-weight: 600;
 
 }
 
 .p2{
-	font-family: "Copperplate", Fantasy;
+	font-family:'Times New Roman';
 }
 
 .option {
@@ -122,9 +125,9 @@ h2 {text-align:center;color:white;}
 	<div id="ekran1" style="visibility:visible">
 
 		<br>
-		<h2 id="entrance" style="background-color: #891894;margin-right: 150px;margin-left: 150px; color: rgb(246, 246, 242)">Hangi FRIENDS Karekterisin?</h2>
+		<h2 id="entrance" style="background-color: #891894;margin-right: 150px;margin-left: 150px;width: 490px;height: 90px;font-size: 40px;border-radius: 50px; padding: 5px;  color: rgb(246, 246, 242)">Hangi FRIENDS Karekterisin?</h2>
 		<br>
-		<img id="entrance" src="//raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/giris.gif" width="390" height="250" style="border-radius: 10px" style="text-align: center;">
+		<img id="entrance" src="//raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/giris.gif" width="490" height="330" style="border-radius: 10px" style="text-align: center;">
 		<br><br><br>
 		<button class= "button buttongiris"id="buttongiris" onclick="gecisYap()" >Teste Başla</button>
 		<br><br><br> 
@@ -135,11 +138,11 @@ h2 {text-align:center;color:white;}
 
 	<p id="quiz">
 		<br><br>
-		<h2 style="background-color: #891894;margin-right: 150px;margin-left: 150px; color: rgb(246, 246, 242)">Hangi Friends Karakterisin? </h2>
+		<h2 style="background-color: #891894;margin-right: 150px;margin-left: 150px; color: rgb(246, 246, 242); font-size: 40px;border-radius: 50px; padding: 5px;">Hangi FRIENDS Karakterisin? </h2>
 		
-		<p id="qnum" style="font-size: 20px; font-weight: 500;color: #fae9e9;">SORU: </p>
+		<p id="qnum" style="font-size: 40px; font-weight: 500;color: #f5f1f1;">SORU: </p>
 
-		<img id="testImg" src="" width="500" height="250" style="border-radius: 10px;"> <br><br>
+		<img id="testImg" src="" width="490" height="330" style="border-radius: 10px;"> <br><br>
 		<label class="option"> <input type='radio' name='option' id="op0" value='A' /> <span id='choice0'></span>  </label> <br>
 		<label class="option"> <input type='radio' name='option' id="op1" value='B' /> <span id='choice1'></span>  </label> <br>
 		<label class="option"> <input type='radio' name='option' id="op2" value='C' /> <span id='choice2'></span>  </label> <br>
@@ -149,10 +152,10 @@ h2 {text-align:center;color:white;}
 	</p>
 	
 	<br>
-	<p id = "referanslar" style="color:yellow">References: </h4>
+	<p id = "referanslar" style="color:yellow;">References: </h4>
 	<a href="https://www.w3schools.com/js/" style="color:white">w3schools</a>&nbsp;
 	<a href="https://codepen.io/Siyanda/pen/Veajpw" style="color:white">Codepen</a>
-    <a href="https://html.com/" style="color:white">HTML</a>
+    <a href="https://html.com/" style="color:white; font-size: 500;">HTML</a>
 	</p>
 
 </div>
@@ -162,12 +165,12 @@ h2 {text-align:center;color:white;}
 	<h2 style="color: yellow;" style="text-align: center">TEST SONUCU </h2>
 	<img id="resultImg" src="" alt="" width="500" height="300" style="border-radius: 12px; ">
 	<br><br>
-	<span> <p style="font-size: 18px; color: rgb(241, 243, 151);">Tebrikler Testi Tamamladın!!!</p></span>
-	<span> <p style="font-size: 18px;">Test Sonucunda Çıkan Friends Karekteri</p></span>
-	<p id="resultText1" style="font-size: 24px; color: yellow;">   </p>
-	<p id="resultText1" style="font-size: 20px; color: yellow;">   </p>
+	<span> <p style="font-size: 40px; color: rgb(241, 243, 151);">Tebrikler Testi Tamamladın!!!</p></span>
+	<span> <p style="font-size: 40px;">Test Sonucunda Çıkan Friends Karekteri</p></span>
+	<p id="resultText1" style="font-size: 30px; color: yellow;">   </p>
+	<p id="resultText1" style="font-size: 30px; color: yellow;">   </p>
 	<br>
-		<button class= "button refreshButton"id="refreshButton" onclick="document.location.reload(true)"style="text-align: center">Tekrar Çöz</button>
+		<button class= "button refreshButton"id="refreshButton" onclick="document.location.reload(true)"style="text-align: center;font-size: 40px;border-radius: 10px;">Tekrar Çöz</button>
 		<br><br><br> 
   </div>
   

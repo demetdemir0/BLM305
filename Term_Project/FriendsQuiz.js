@@ -152,12 +152,47 @@ function gecisYap(){
     document.getElementById("ekran1").style.visibility = "hidden" ;
     document.getElementById("quizekran").style.visibility = "visible" ;
    
-    if (confirm("Do you want to play music on this website?")) {
+    if (confirm("Websitesi müziğini çal?")) {
          play();
     }
 }
 
 degistir();
+if ("serviceWorker" in navigator) {
+    // Register the service worker file
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then(function() {
+        console.log("Service worker registered!");
+      })
+      .catch(function(error) {
+        console.log("Error registering service worker: ", error);
+      });
+  }
+  // This is the service worker "install" event
+self.addEventListener("install", function(event) {
+    // Open a cache and store the resources you want to cache
+    event.waitUntil(
+      caches.open("my-cache").then(function(cache) {
+        return cache.addAll([
+          "/index.html",
+          "/css/style.css",
+          "/js/main.js",
+          "/images/logo.png"
+        ]);
+      })
+    );
+  });
+  // This is the service worker "fetch" event
+self.addEventListener("fetch", function(event) {
+    // Try to get the resource from the network first
+    event.respondWith(
+      fetch(event.request).catch(function() {
+        // If the network request fails, try to get the resource from the cache
+        return caches.match(event.request);
+      })
+    );
+  });
 const CACHE ='Term_Project'
 const FILES = ['/Term_Project/', '/Term_Project/FriendsQuiz.html/','/Term_Project/FriendsQuiz.js/', '/Term_Project/images','/Term_Project/gifs/','/Term_Project/index.html']
 function installCB(e) {

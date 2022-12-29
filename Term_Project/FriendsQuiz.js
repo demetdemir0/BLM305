@@ -50,6 +50,8 @@ let sonucgifs=[
 var options;
 var testsonuc;
 
+
+
 function puanlama(){
 
     options = document.getElementsByName("option");
@@ -140,7 +142,6 @@ function degistir(){
     op5.checked = false;    
     } 
 
-
 function play() {
 
     let audio1 = new Audio('https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/FriendsThemeSong.mp3');
@@ -150,8 +151,11 @@ function play() {
 function gecisYap(){
     document.getElementById("ekran1").style.visibility = "hidden" ;
     document.getElementById("quizekran").style.visibility = "visible" ;
-    play();
+   
+    if (confirm("Do you want to play music on this website?")) {
+         play();
     }
+}
 
 degistir();
 const CACHE ='Term_Project'

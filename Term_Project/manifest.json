@@ -8,6 +8,60 @@
         "src": "images/avatar.png",
         "sizes": "192x192",
         "type": "image/png"
-      }
+      }, {
+          "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/giris.gif",
+          "sizes": "490x330",
+          "type": "gif"
+              
+        }, {
+        "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru2.gif",
+        "sizes": "490x330",
+        "type": "gif"
+      }, {
+        "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru3.gif",
+        "sizes": "490x330",
+        "type": "gif"
+      }, {
+        "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru4.gif",
+        "sizes": "490x330",
+        "type": "gif"
+      }, {
+        "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru5.gif",
+        "sizes": "490x330",
+        "type": "gif"
+      }, {
+        "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/soru6.gif",
+        "sizes": "490x330",
+        "type": "gif"
+      }, {
+        "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/giris.gif",
+        "sizes": "490x330",
+        "type": "gif"
+            
+      }, {
+      "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/monica.gif.gif",
+      "sizes": "490x330",
+      "type": "gif"
+    }, {
+      "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/ross.gif.gif",
+      "sizes": "490x330",
+      "type": "gif"
+    }, {
+      "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/pheobe.gif.gif",
+      "sizes": "490x330",
+      "type": "gif"
+    }, {
+      "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/chandler.gif.gif",
+      "sizes": "490x330",
+      "type": "gif"
+    }, {
+      "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/joey.gif.gif",
+      "sizes": "490x330",
+      "type": "gif"
+    },{
+      "src": "https://raw.githubusercontent.com/demetdemir0/BLM305/main/Term_Project/gifs/rachel.gif.gif",
+      "sizes": "490x330",
+      "type": "gif"
+    }
     ]
   }

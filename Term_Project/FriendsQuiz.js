@@ -1,3 +1,7 @@
+
+
+navigator.serviceWorker.register('https://demetdemir0.github.io/BLM305/sw.js');
+
 var num=0;
 var sum=0;
 var monica=0;
